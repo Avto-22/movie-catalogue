@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    console.log('ffgfgf');
     this.loading = this.loadingService.loading$();
     this.auth.user?.pipe(
       tap(x => {
