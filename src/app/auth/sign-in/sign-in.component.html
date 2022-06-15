@@ -1,0 +1,20 @@
+<div class="bg">
+  <div class="main">
+    <input type="checkbox" id="chk">
+    <div class="signup">
+      <form #SignInForm="ngForm">
+        <label for="chk" class="sig">Sign in</label>
+     <div class="user-box">
+          <input type="email" ngModel name="email" title="Enter email" required>
+          <label>{{ "EMAIL" | translate }}</label>
+        </div> 
+        <div class="user-box">
+          <input type="password" ngModel name="password" title="Enter password" required>
+          <label>{{ "PASSWORD" | translate }}</label>
+        </div>
+        <button type="submit" (click)="signIn(SignInForm.value)">{{ "SIGN-IN" | translate }}</button>
+        <button style="width: 40%; height: 40px; margin-top:25px; background-color:darkgoldenrod;" (click)="goToSignUp()">{{ "SIGN-UP" | translate }}</button>
+      </form>
+    </div>
+  </div>
+</div>

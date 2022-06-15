@@ -1,0 +1,30 @@
+<nav class="menu">
+  <input id="menu__button" type="checkbox" checked />
+  <a class="menu__item" (click)="goToCatalogue()">{{"HEADER.CATALOGUE" | translate }}</a>
+  <a class="menu__item" (click)="goToAddComponent()">{{"HEADER.ADD-MOVIE" | translate }}</a>
+  <a class="menu__item" (click)="signOut()">{{"HEADER.SIGN-OUT" | translate }}</a>
+  <label class="menu__close" for="menu__button"></label>
+</nav>
+<header id='header'>
+  <div class='logo' (click)="goToCatalogue()">
+    <p>{{"HEADER.CATALOGUE" | translate }}</p>
+  </div>
+  
+  <nav>
+    <ul class='navbar'>
+      <li><a (click)="goToAddComponent()">{{"HEADER.ADD-MOVIE" | translate }}</a></li>
+    </ul>
+    
+  </nav>
+  <a href="#" class="sign-in">
+    <button class="btn-contact" (click)="signOut()">{{"HEADER.SIGN-OUT" | translate }}</button>
+    
+  </a>
+  
+</header>
+
+ <div class="language" (click)="changeLang()">
+  <p> {{translate.currentLang=="en" ? "ka":"eng"}} </p> 
+ </div>
+
+<br><br><br>

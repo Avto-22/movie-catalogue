@@ -1,0 +1,52 @@
+<div class="bg"></div>
+<app-header></app-header>
+<div class="title">
+    <h3>{{"CATALOGUE.MOVIES" | translate}}</h3>
+</div>
+<div class="create-catalogue" *ngIf="moviesArray.length==0">
+    <p>create your catalogue</p>
+</div>
+<div class="main" *ngIf="moviesArray">
+    <section>
+        <div class="container">
+            <div class="card" *ngFor="let movie of moviesArray; let i=index">
+                    <div class="delete"><img src="../../assets/images/cancel-multiply-svgrepo-com.svg" alt="" title="delete movie"
+                            (click)='catalogueFnService.questionAlert(movie.movieId,i,this)'></div>
+                    <div class="content">
+                        <div class="imgBx">
+                            <img [src]="movie.poster">
+                        </div>
+                        <div class="contentBx">
+                            <h3>{{ movie.title }}<br><span>{{ movie.director}}</span></h3>
+                        </div>
+                        <div class="time">
+                            <p>{{ movie.time|date:'mediumDate' }}</p>
+                        </div>
+                        <div class="imdb">
+                            <p>imdb: {{movie.imdbRating}}</p>
+                        </div>
+                        <div class="status">
+                            <p class="watched" *ngIf="movie.status==status.Watched"><img
+                                    src="../../assets/images/success-svgrepo-com.svg"></p>
+                            <p class="not-watched" *ngIf="movie.status==status.NotWatched"><img
+                                    src="../../assets/images/error-svgrepo-com.svg"></p>
+                        </div>
+                    </div>
+                    <div class="sci">
+
+                        <div class="film-text">
+
+                            <div class="imgDiv">
+                                <img [src]="movie.poster">
+                            </div>
+                            <p> {{movie.plot}} </p>
+                            <div class="detailsDiv">
+                                <button class="button-86" role="button"
+                                    (click)="goToDetails(movie.movieId)">{{"CATALOGUE.DETAILS" | translate}}</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

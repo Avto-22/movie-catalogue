@@ -1,0 +1,157 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row height d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <div class="search">
+        <i class="fa fa-search"></i>
+        <form>
+          <input type="search" name="search" class="form-control" [(ngModel)]="movieName" [placeholder]="searchPlaceholder" >
+          <button class="btn btn-warning" (click)="addMovieFacadeService.search(this)">{{"ADD-MOVIE.SEARCH" | translate}}</button>
+          <div class="lastSearch">
+            <p class="button-52" *ngFor="let movie of lastSearch" (click)="addMovie(movie)">
+             {{movie}} 
+            </p> <br>
+          </div>
+          <div id="InfoBanner" *ngIf="isError">
+            <span class="reversed reversedRight">
+              <span>
+                &#9888;
+              </span>
+            </span>
+            <span class="reversed reversedLeft">
+             {{"ADD-MOVIE.SEARCH-ERROR" | translate}}
+            </span> 
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main" *ngIf="isSearched" style="margin-bottom:100px">
+  <div class="form" *ngIf="movie">
+    <div class="image">
+      <img [src]="movie.poster" alt="">
+      <div class="sideCard">
+        <div class="body">
+          <div class="title">
+            <h2>
+               {{movie.title}}
+            </h2>
+          </div>
+          <div class="plot">
+            <p>
+               {{movie.plot}}
+            </p>
+          </div>
+          <div class="actors">
+            <p>----{{"ADD-MOVIE.ACTORS" | translate}}----</p>
+            <p>
+               {{movie.actors}}
+            </p>
+          </div>
+          <div class="flags">
+            <div class="flagsImg" *ngFor="let country of movie.countrys">
+              <ng-container *ngIf="country.flags">
+                <img [src]="country.flags.svg" alt="" [title]="getPopulation(country)">
+              </ng-container>
+            </div>
+          </div>
+          <div class="imdb">
+            <p>
+              imdb: {{movie.imdbRating}}
+            </p>
+          </div>
+          <div class="time">
+            <p>
+              {{movie.runTime}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="form" id='myForm'>
+      <div class="form-group review" (click)="sweetalert.textArea(form)">
+        <label for="exampleFormControlTextarea1"> {{"MOVIE.REVIEW" | translate}} </label>
+        <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="3">
+         {{form.get('review').value}}
+        </textarea>
+      </div>
+      <div class="radioContainer">
+        <p>{{"MOVIE.RATING" | translate}}:</p>
+        <label>
+          <input type="radio" value="1" formControlName="rating" class="radio">
+          <svg viewBox="0 0 576 512" width="100" title="star" class="star" id="div1" (mouseover)="addMovieFnService.overStar(1)"
+            (mouseout)="addMovieFnService.outStar(1,actuelStar)" (click)="clickStar(1)">
+            <path
+              d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+          </svg>
+        </label>
+        <label>
+          <input type="radio" value="2" formControlName="rating" class="radio">
+          <svg viewBox="0 0 576 512" width="100" title="star" class="star" id="div2" (mouseover)="addMovieFnService.overStar(2)"
+            (mouseout)="addMovieFnService.outStar(2,actuelStar)" (click)="clickStar(2)">
+            <path
+              d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+          </svg>
+        </label>
+        <label>
+          <input type="radio" value="3" formControlName="rating" class="radio">
+          <svg viewBox="0 0 576 512" width="100" title="star" class="star" id="div3" (mouseover)="addMovieFnService.overStar(3)"
+            (mouseout)="addMovieFnService.outStar(3,actuelStar)" (click)="clickStar(3)">
+            <path
+              d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+          </svg>
+        </label>
+        <label>
+          <input type="radio" value="4" formControlName="rating" class="radio">
+          <svg viewBox="0 0 576 512" width="100" title="star" class="star" id="div4" (mouseover)="addMovieFnService.overStar(4)"
+            (mouseout)="addMovieFnService.outStar(4,actuelStar)" (click)="clickStar(4)">
+            <path
+              d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+          </svg>
+        </label>
+        <label>
+          <input type="radio" value="5" formControlName="rating" class="radio">
+          <svg viewBox="0 0 576 512" width="100" title="star" class="star" id="div5" (mouseover)="addMovieFnService.overStar(5)"
+            (mouseout)="addMovieFnService.outStar(5,actuelStar)" (click)="clickStar(5)">
+            <path
+              d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" />
+          </svg>
+        </label>
+      </div>
+      <div class="form-group status">
+        <label for="exampleFormControlSelect1">{{"MOVIE.STATUS" | translate}}</label>
+        <select class="form-control" name="status" id="exampleFormControlSelect1" (click)="sweetalert.selectStatus(form)">
+          <option><p style="text-align:center">{{form.get('status').value==null ? ("MOVIE.STATUS-PLACEHOLDER" | translate) : form.get('status').value}}</p></option>
+        </select>
+        <ng-container *ngIf="getMovieStatus">
+          <select>
+            <option>დღეს</option>
+            <option>ხვალ</option>
+          </select>
+        </ng-container>
+      </div>
+      <div class="error" *ngIf="form.invalid">
+        <div calss="reviewError" *ngIf="form.get('review').errors" (click)="sweetalert.reviewErrorAlert()">
+          <div class="warning">{{"WARNING.REVIEW" | translate}}</div>
+        </div>
+        <div calss="ratingError" *ngIf="form.get('rating').errors" (click)="sweetalert.ratingErrorAlert()">
+          <div class="warning">{{"WARNING.RATING" | translate}}</div>
+        </div>
+        <div calss="statusError" *ngIf="form.get('status').errors" (click)="sweetalert.statusErrorAlert()">
+          <div class="warning">{{"WARNING.STATUS" | translate}}</div>
+        </div>
+      </div>
+      <div class="add">
+        <!-- <button class="button-49" role="button">დამატება</button> -->
+        <button (click)="addMovieFacadeService.addStoreMovie(this)" class="button-82-pushable" role="button">
+          <span class="button-82-shadow"></span>
+          <span class="button-82-edge"></span>
+          <span class="button-82-front text">
+           დამატება
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

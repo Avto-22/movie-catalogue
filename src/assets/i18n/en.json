@@ -1,0 +1,42 @@
+{
+    "HOME":"home",
+    "TITLE": "Catalogue",
+    "EMAIL": "Email address",
+    "PASSWORD": "password",
+    "EMAIL_RULE": "We'll never share your email with anyone else",
+    "REPEAT_PASSWORD": "repeat password",
+    "SIGN-IN":"Sign in",
+    "SIGN-UP":"Sign up",
+    "HEADER":{
+        "SIGN-OUT":"sign out",
+        "ADD-MOVIE":"add movie",
+        "CATALOGUE":"catalogue"
+    },
+    "CATALOGUE":{
+        "MOVIES":"Movies",
+        "DETAILS": "details"        
+    },
+    "MOVIE-DETAILS":{
+        "PLOT": "Plot",
+        "ESTIMATE": "customer estimate",
+        "ACTORS":"Actors"
+    },
+    "ADD-MOVIE":{
+        "SEARCH-PLACEHOLDER": "search movie",
+        "SEARCH":"Search",
+        "SEARCH-ERROR":"movie not found. Try again!",
+        "ACTORS":"Actors"
+    },
+    "MOVIE":{
+        "REVIEW":"movie review",
+        "STATUS":"movie status",
+        "RATING":"rating",
+        "STATUS-PLACEHOLDER":"select status"
+    },
+    "WARNING":{
+        "REVIEW":"review minlength 10",
+        "RATING":"rating is required",
+        "STATUS":"status is required"
+    }
+
+}
